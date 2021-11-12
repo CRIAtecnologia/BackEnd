@@ -7,7 +7,6 @@ const UserSchema = new Schema({
     image: { type: String, required: false, default: '' },
     instagram: { type: String, required: false, unique: true },
     email: { type: String, required: false, unique: true },
-    phone: { type: String, required: false, unique: true },
     pix: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     active: { type: Boolean, required: true, default: true },
