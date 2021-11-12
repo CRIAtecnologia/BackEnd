@@ -13,8 +13,8 @@ class Jwt {
         }
         return jwt.sign(userData, key);
     }
-    verify() {
-        const { jwt, key, token } = dependencies;
+    verify(token) {
+        const { jwt, key } = dependencies;
         return jwt.verify(token, key);
     }
 };
