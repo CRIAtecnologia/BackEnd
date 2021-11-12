@@ -15,16 +15,21 @@ class User {
         })
     }
 
-    findById(id) {
-        return this.model.findOne({ _id: id, active: true }, { password: 0 });
+    findById(id, fields = { password: 0 }) {
+        return this.model.findOne({ _id: id, active: true }, fields);
     }
 
     findByEmail(email) {
         return this.model.findOne({ email });
     }
 
-    findAll() {
-        return this.model.find({ active: true }, { password: 0 });
+    findAll(fields = { password: 0 }, options = { skip: 0, limit: 100 }) {
+        const { limit, skip } = options;
+        return this.model.find({ active: true }, fields).skip(skip).limit(limit);
+    }
+
+    countAll() {
+        return this.model.countDocuments({ active: true });
     }
 
     update(_id, data) {
